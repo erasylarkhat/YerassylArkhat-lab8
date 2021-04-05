@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MailController;
+use App\Models\lab;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/main', [MailController::class, 'index']);
+Route::post('/main', [MailController::class, 'store'])->name('add');
+
+Route::get('/mail/send', 'App\Http\Controllers\MailController@send');
